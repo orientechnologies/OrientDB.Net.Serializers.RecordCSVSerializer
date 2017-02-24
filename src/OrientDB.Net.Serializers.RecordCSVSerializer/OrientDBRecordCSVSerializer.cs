@@ -637,13 +637,26 @@ namespace OrientDB.Net.Serializers.RecordCSVSerializer
             {
                 foreach(PropertyInfo propertyInfo in properties)
                 {
-                    if((!string.IsNullOrWhiteSpace(propertyInfo.Name)) && (propertyInfo.Name[0] != '@'))
+                    switch(propertyInfo.Name)
                     {
-                        if (stringBuilder.Length > 0)
-                            stringBuilder.Append(",");
+                        case "OClassName":
+                            continue;
+                        case "ORID":
+                            continue;
+                        case "OVersion":
+                            continue;
+                        case "OClassId":
+                            continue;
+                        default:
+                            if ((!string.IsNullOrWhiteSpace(propertyInfo.Name)) && (propertyInfo.Name[0] != '@'))
+                            {
+                                if (stringBuilder.Length > 0)
+                                    stringBuilder.Append(",");
 
-                        stringBuilder.AppendFormat("{0}:{1}", propertyInfo.Name, SerializeValue(propertyInfo.GetValue(input), propertyInfo.PropertyType));
-                    }
+                                stringBuilder.AppendFormat("{0}:{1}", propertyInfo.Name, SerializeValue(propertyInfo.GetValue(input), propertyInfo.PropertyType));
+                            }
+                            break;
+                    }                    
                 }
             }
 

@@ -1,10 +1,10 @@
 {
   "title": "OrientDB.Net.Serializers.RecordCSVSerializer",
   "copyright": "2017 Innov8tiv",
-  "version": "0.0.10-prerelease",
+  "version": "0.0.11-prerelease",
 
   "dependencies": {
-    "OrientDB.Net.Core": "0.0.18-prerelease"
+    "OrientDB.Net.Core": "0.0.25-trans2"
   },
 
   "frameworks": {
