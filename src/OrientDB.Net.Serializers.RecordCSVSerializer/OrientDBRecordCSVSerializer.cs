@@ -728,7 +728,7 @@ namespace OrientDB.Net.Serializers.RecordCSVSerializer
                 {
                     bld.Append("{");
 
-                    IDictionary<string, object> collection = (IDictionary<string, object>)value;
+                    IDictionary<string, object> collection = ((IDictionary)value).Cast<dynamic>().ToDictionary(e => (string)e.Key, e => e.Value);
 
                     bool first = true;
                     foreach (var keyVal in collection)
